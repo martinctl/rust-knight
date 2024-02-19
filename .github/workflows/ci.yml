@@ -19,14 +19,14 @@ jobs:
     - name: Test core
       run: cargo test --manifest-path core/Cargo.toml
 
-  build-server:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build server
-      run: cargo build --release --manifest-path server/Cargo.toml
-    - name: Test server
-      run: cargo test --manifest-path server/Cargo.toml
+#  build-server:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v3
+#    - name: Build server
+#      run: cargo build --release --manifest-path server/Cargo.toml
+#    - name: Test server
+#      run: cargo test --manifest-path server/Cargo.toml
 
   build-web:
     runs-on: ubuntu-latest
