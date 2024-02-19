@@ -1,3 +1,6 @@
+[![CI](https://github.com/martinctl/rust-knight/actions/workflows/ci.yml/badge.svg)](https://github.com/martinctl/rust-knight/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Rust Knight
 
 RustKnight is a modern, open-source chess game that brings the classic game to your fingertips, developed using the Rust programming language. With its backend powered by Rocket and SurrealDB, RustKnight offers a seamless and responsive gaming experience. The project is divided into a web app, crafted with Yew for a rich interactive experience, and a desktop app built with Tauri, ensuring a lightweight and efficient application.
