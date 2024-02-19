@@ -10,6 +10,15 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  build-core:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build core
+      run: cargo build --release --manifest-path core/Cargo.toml
+    - name: Test core
+      run: cargo test --manifest-path core/Cargo.toml
+
   build-server:
     runs-on: ubuntu-latest
     steps:
