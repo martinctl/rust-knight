@@ -6,7 +6,6 @@ use std::fmt::Display;
 /// Represents a chess piece.
 ///
 /// This struct is used to represent a chess piece with its type and color.
-#[derive(Debug)]
 pub struct Piece {
     piece: u8,
 }
@@ -78,7 +77,7 @@ impl Piece {
     ///
     /// * The type of the chess piece from the PieceType enum.
     pub fn piece_type(&self) -> PieceType {
-        match self.piece & 0b111 {
+        match self.piece & !0b1000 {
             0 => PieceType::None,
             1 => PieceType::Pawn,
             2 => PieceType::Knight,
@@ -127,26 +126,6 @@ impl Piece {
         }
     }
 
-    /// Gets the value of the chess piece.
-    ///
-    /// The value is based on the relative value of the chess pieces.
-    /// See [Chess piece relative value](https://en.wikipedia.org/wiki/Chess_piece_relative_value)
-    ///
-    /// # Returns
-    ///
-    /// * The value of the chess piece.
-    pub fn value(&self) -> i32 {
-        match self.piece() {
-            Pieces::None => 0,
-            Pieces::WhitePawn | Pieces::BlackPawn => 100,
-            Pieces::WhiteKnight | Pieces::BlackKnight => 320,
-            Pieces::WhiteBishop | Pieces::BlackBishop => 330,
-            Pieces::WhiteRook | Pieces::BlackRook => 500,
-            Pieces::WhiteQueen | Pieces::BlackQueen => 900,
-            Pieces::WhiteKing | Pieces::BlackKing => 20000,
-        }
-    }
-
     /// Gets the symbol of the chess piece.
     ///
     /// # Returns
@@ -169,29 +148,6 @@ impl Piece {
             Pieces::BlackKing => "k",
         }
     }
-
-    /// Gets the unicode symbol of the chess piece.
-    ///
-    /// # Returns
-    ///
-    /// * The unicode symbol of the chess piece.
-    pub fn get_unicode_symbol(&self) -> &'static str {
-        match self.piece() {
-            Pieces::None => " ",
-            Pieces::WhitePawn => "♙",
-            Pieces::WhiteKnight => "♘",
-            Pieces::WhiteBishop => "♗",
-            Pieces::WhiteRook => "♖",
-            Pieces::WhiteQueen => "♕",
-            Pieces::WhiteKing => "♔",
-            Pieces::BlackPawn => "♟",
-            Pieces::BlackKnight => "♞",
-            Pieces::BlackBishop => "♝",
-            Pieces::BlackRook => "♜",
-            Pieces::BlackQueen => "♛",
-            Pieces::BlackKing => "♚",
-        }
-    }
 }
 
 impl Display for Piece {
@@ -206,5 +162,23 @@ impl Display for Piece {
     /// * A Result that indicates whether the operation was successful.
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.get_symbol())
+    }
+}
+
+#[cfg(test)]
+impl Piece {
+    /// Creates a new chess piece for testing.
+    ///
+    /// # Arguments
+    ///
+    /// * `value` - create a new chess piece with the given value.
+    ///
+    /// # Returns
+    ///
+    /// * A new Piece object.
+    pub fn new_for_test(value: u8) -> Piece {
+        Piece {
+            piece: value
+        }
     }
 }
