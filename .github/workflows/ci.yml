@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-server:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build server
+      run: cargo build --release --manifest-path server/Cargo.toml
+    - name: Test server
+      run: cargo test --manifest-path server/Cargo.toml
+
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build web
+      run: cargo build --release --manifest-path web/Cargo.toml
+    - name: Test web
+      run: cargo test --manifest-path web/Cargo.toml
