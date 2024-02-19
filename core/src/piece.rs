@@ -6,6 +6,7 @@ use std::fmt::Display;
 /// Represents a chess piece.
 ///
 /// This struct is used to represent a chess piece with its type and color.
+#[derive(Copy, Clone)]
 pub struct Piece {
     piece: u8,
 }

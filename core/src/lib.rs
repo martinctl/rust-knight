@@ -1,13 +1,12 @@
 #![allow(dead_code)]
 mod piece;
+mod board;
 
 #[cfg(test)]
 mod tests {
     use super::piece::*;
 
     const WHITE_PAWN: u8 = 1;
-
-
 
     #[test]
     fn test_piece_type() {
@@ -75,5 +74,4 @@ mod tests {
     fn test_panic_piece() {
         Piece::new_for_test(17).piece();
     }
-
 }
