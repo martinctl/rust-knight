@@ -24,6 +24,9 @@ jobs:
       - name: Install grcov
         run: cargo install grcov
 
+      - name: Install llvm-tools
+        run: sudo apt-get install llvm
+
       - name: Generate Code Coverage
         run: |
           cd core
