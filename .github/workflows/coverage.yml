@@ -26,6 +26,7 @@ jobs:
 
       - name: Generate Code Coverage
         run: |
+          cd core
           mkdir -p target/coverage
           export RUSTFLAGS="-Cinstrument-coverage"
           export LLVM_PROFILE_FILE="target/coverage/coverage-%p-%m.profraw"
