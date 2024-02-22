@@ -34,10 +34,10 @@ jobs:
           export RUSTFLAGS="-Cinstrument-coverage"
           export LLVM_PROFILE_FILE="target/coverage/coverage-%p-%m.profraw"
           cargo test
-          grcov target/coverage --binary-path target/debug -s . -t cobertura -o target/coverage/coverage.xml --keep-only 'src/*' --output-types html,cobertura
+          grcov target/coverage --binary-path target/debug -s . -t cobertura -o target/coverage/coverage.xml --keep-only 'src/*' --output-types cobertura
 
       - name: Upload to Codecov
         uses: codecov/codecov-action@v2
         with:
-          files: ./target/coverage/coverage.xml
+          files: ./target/coverage/cobertura.xml
           fail_ci_if_error: true
